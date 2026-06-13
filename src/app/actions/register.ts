@@ -1,23 +1,12 @@
 "use server";
 
-import { refresh } from "next/cache";
-import { readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
+import { createSupabaseServerClient } from "@/lib/supabase";
 
 // --- Types ---
 
 interface TeamMember {
   name: string;
   email: string;
-}
-
-interface Registration {
-  id: string;
-  teamName: string;
-  members: TeamMember[];
-  university: string;
-  projectIdea: string;
-  submittedAt: string;
 }
 
 export interface RegisterState {
@@ -103,7 +92,7 @@ export async function registerTeam(
     };
   }
 
-  // 2. Build registration object
+  // 2. Extract validated data
   const teamName = (formData.get("teamName") as string).trim();
   const university = (formData.get("university") as string).trim();
   const projectIdea = (formData.get("projectIdea") as string).trim();
@@ -117,32 +106,22 @@ export async function registerTeam(
     }
   }
 
-  const registration: Registration = {
-    id: crypto.randomUUID(),
-    teamName,
-    members,
+  // 3. Insert into Supabase
+  const supabase = createSupabaseServerClient();
+  const { error } = await supabase.from("registrations").insert({
+    team_name: teamName,
     university,
-    projectIdea,
-    submittedAt: new Date().toISOString(),
-  };
+    project_idea: projectIdea,
+    members, // JSONB column — auto-serialized by supabase-js
+  });
 
-  // 3. Read existing registrations
-  const filePath = path.join(process.cwd(), "src", "data", "registrations.json");
-  let registrations: Registration[] = [];
-  try {
-    const raw = await readFile(filePath, "utf-8");
-    registrations = JSON.parse(raw);
-    if (!Array.isArray(registrations)) registrations = [];
-  } catch {
-    registrations = [];
+  if (error) {
+    console.error("Supabase insert error:", error);
+    return {
+      success: false,
+      message: "Failed to register. Please try again or contact us at hackathonhub@nsbm.ac.lk.",
+    };
   }
-
-  // 4. Append and write
-  registrations.push(registration);
-  await writeFile(filePath, JSON.stringify(registrations, null, 2), "utf-8");
-
-  // 5. Refresh cache
-  refresh();
 
   return {
     success: true,
