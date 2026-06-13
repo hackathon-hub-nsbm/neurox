@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-bg-secondary">
@@ -5,20 +7,13 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-3">
-              <span
-                className="text-xl font-bold gradient-text-cyan"
-                style={{ fontFamily: "var(--font-geist-mono)" }}
-              >
-                NX
-              </span>
-              <span
-                className="text-xs text-text-dim tracking-[0.2em]"
-                style={{ fontFamily: "var(--font-geist-mono)" }}
-              >
-                NEUROX
-              </span>
-            </div>
+            <Image
+              src="/neurox.webp"
+              alt="NeuroX"
+              width={200}
+              height={40}
+              className="h-10 w-auto mb-3"
+            />
             <p className="text-sm text-text-secondary leading-relaxed mb-4">
               A three-phase AI hackathon organized by NSBM Hackathon Hub.
               Empowering Sri Lankan undergraduates to innovate at the
@@ -74,9 +69,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-sm text-text-secondary">
-                  NSBM Green University
-                </span>
+                <Image
+                  src="/nsbm.webp"
+                  alt="NSBM Green University"
+                  width={160}
+                  height={40}
+                  className="h-10 w-auto mt-1"
+                />
               </li>
               <li>
                 <span className="text-sm text-text-secondary">
@@ -94,9 +93,13 @@ export default function Footer() {
             <h4 className="text-xs font-semibold tracking-widest uppercase text-text-primary mb-4">
               Organized By
             </h4>
-            <p className="text-sm text-accent-cyan font-semibold mb-1">
-              NSBM Hackathon Hub
-            </p>
+            <Image
+              src="/hackathonhub.webp"
+              alt="NSBM Hackathon Hub"
+              width={160}
+              height={40}
+              className="h-10 w-auto mb-2"
+            />
             <p className="text-sm text-text-secondary leading-relaxed">
               NSBM Green University&apos;s premier innovation and hackathon
               community, fostering technical excellence and creative

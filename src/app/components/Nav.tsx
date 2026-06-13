@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -23,18 +24,16 @@ export default function Nav() {
           {/* Logo */}
           <a
             href="#hero"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2 group shrink-0"
             onClick={handleClick}
           >
-            <span
-              className="text-lg font-bold gradient-text-cyan tracking-tight"
-              style={{ fontFamily: "var(--font-geist-mono)" }}
-            >
-              NX
-            </span>
-            <span className="text-xs text-text-dim tracking-widest hidden sm:inline">
-              NEUROX
-            </span>
+            <Image
+              src="/neurox.webp"
+              alt="NeuroX"
+              width={120}
+              height={32}
+              className="h-8 w-auto"
+            />
           </a>
 
           {/* Desktop links */}

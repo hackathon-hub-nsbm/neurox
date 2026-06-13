@@ -1,4 +1,4 @@
-import GlitchText from "./GlitchText";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -18,23 +18,15 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Organizer badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border-glow bg-bg-tertiary/50 mb-8"
-          style={{ fontFamily: "var(--font-geist-mono)" }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
-          <span className="text-xs text-text-secondary tracking-wider uppercase">
-            NSBM Hackathon Hub Presents
-          </span>
-        </div>
-
-        {/* Main title */}
-        <GlitchText as="h1" className="block mb-6" interval={3500}>
-          <span className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter gradient-text leading-none">
-            NEUROX
-          </span>
-        </GlitchText>
+        {/* NeuroX logo */}
+        <Image
+          src="/neurox.webp"
+          alt="NeuroX"
+          width={600}
+          height={180}
+          className="w-4/5 max-w-lg h-auto mx-auto mb-8"
+          priority
+        />
 
         {/* Tagline */}
         <p className="text-lg sm:text-xl md:text-2xl text-text-secondary mb-4 max-w-2xl mx-auto leading-relaxed">
