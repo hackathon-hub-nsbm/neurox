@@ -6,10 +6,12 @@
     "dev": "bun --bun next dev",
     "build": "bun --bun next build",
     "start": "bun --bun next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "export": "bun run scripts/export-registrations.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.1",
+    "exceljs": "^4.4.0",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"
