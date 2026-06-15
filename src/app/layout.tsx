@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import BackgroundEffects from "./components/BackgroundEffects";
-import InitialLoadingOverlay from "./components/InitialLoadingOverlay";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -55,11 +53,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
     >
-      <body className="min-h-screen relative bg-bg-primary text-text-primary scanlines">
-        <BackgroundEffects />
-        {children}
-        <InitialLoadingOverlay />
-      </body>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }

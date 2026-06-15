@@ -21,6 +21,46 @@
   --color-error: #ef4444;
 }
 
+/* --- Gallery / Devpost-style theme --- */
+[data-theme="gallery"] {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-bg-tertiary: #f1f5f9;
+  --color-bg-card: #ffffff;
+  --color-accent-cyan: #0284c7;
+  --color-accent-cyan-dim: #0284c715;
+  --color-accent-blue: #2563eb;
+  --color-accent-blue-dim: #2563eb15;
+  --color-accent-purple: #7c3aed;
+  --color-accent-purple-dim: #7c3aed15;
+  --color-accent-pink: #db2777;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-dim: #94a3b8;
+  --color-border: #e2e8f0;
+  --color-border-glow: #0284c720;
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+}
+
+[data-theme="gallery"] body::before,
+[data-theme="gallery"]::before {
+  display: none;
+}
+
+[data-theme="gallery"] .scanlines::after {
+  display: none;
+}
+
+/* Gallery card hover */
+[data-theme="gallery"] .card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+[data-theme="gallery"] .card-hover:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
 @theme inline {
   --color-bg-primary: var(--color-bg-primary);
   --color-bg-secondary: var(--color-bg-secondary);

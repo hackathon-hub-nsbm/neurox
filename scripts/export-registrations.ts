@@ -217,6 +217,104 @@ async function buildWorkbook(rows: FlattenedRow[]): Promise<ExcelJS.Workbook> {
 }
 
 // ---------------------------------------------------------------------------
+// Projects
+// ---------------------------------------------------------------------------
+
+interface ProjectRow {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  technologies: string[];
+  track: string | null;
+  github_url: string | null;
+  demo_url: string | null;
+  live_url: string | null;
+  created_at: string;
+  registration?: {
+    team_name: string;
+    university: string;
+  } | null;
+}
+
+async function fetchProjects(): Promise<ProjectRow[]> {
+  const url = requireEnv("NEXT_PUBLIC_SUPABASE_URL");
+  const key = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
+
+  const supabase = createClient(url, key);
+
+  const { data, error } = await supabase
+    .from("projects")
+    .select(`*, registration:registrations(team_name, university)`)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(`❌ Failed to fetch projects: ${error.message}`);
+    process.exit(1);
+  }
+
+  return (data ?? []) as ProjectRow[];
+}
+
+const PROJECT_HEADERS: { key: string; label: string }[] = [
+  { key: "id", label: "ID" },
+  { key: "name", label: "Project Name" },
+  { key: "tagline", label: "Tagline" },
+  { key: "description", label: "Description" },
+  { key: "technologies", label: "Technologies" },
+  { key: "track", label: "Track" },
+  { key: "github_url", label: "GitHub" },
+  { key: "demo_url", label: "Demo" },
+  { key: "live_url", label: "Live URL" },
+  { key: "team_name", label: "Team Name" },
+  { key: "university", label: "University" },
+  { key: "created_at", label: "Submitted At" },
+];
+
+function buildProjectsSheet(
+  ws: ExcelJS.Worksheet,
+  projects: ProjectRow[]
+) {
+  // Header row
+  const headerRow = ws.addRow(PROJECT_HEADERS.map((h) => h.label));
+  headerRow.font = { bold: true };
+  headerRow.fill = {
+    type: "pattern",
+    pattern: "solid",
+    fgColor: { argb: "FFD1FAE5" }, // light green
+  };
+  headerRow.alignment = { vertical: "middle", horizontal: "left" };
+
+  // Data rows
+  for (const p of projects) {
+    ws.addRow([
+      p.id,
+      p.name,
+      p.tagline,
+      p.description,
+      p.technologies?.join(", ") ?? "",
+      p.track ?? "",
+      p.github_url ?? "",
+      p.demo_url ?? "",
+      p.live_url ?? "",
+      p.registration?.team_name ?? "",
+      p.registration?.university ?? "",
+      formatDate(p.created_at),
+    ]);
+  }
+
+  // Freeze header
+  ws.views = [{ state: "frozen", ySplit: 1 }];
+
+  // Auto-width
+  ws.columns = PROJECT_HEADERS.map((h) => ({
+    header: h.label,
+    key: h.key,
+    width: Math.max(h.label.length + 4, 15),
+  }));
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -225,13 +323,25 @@ async function main() {
   const registrations = await fetchRegistrations();
 
   if (registrations.length === 0) {
-    console.log("ℹ️  No registrations found. Generating empty spreadsheet.");
+    console.log("ℹ️  No registrations found.");
   } else {
     console.log(`✅ ${registrations.length} registration(s) fetched.`);
   }
 
   const flat = registrations.map(flattenRow);
   const workbook = await buildWorkbook(flat);
+
+  // Add projects sheet
+  console.log("📋 Fetching projects from Supabase…");
+  const projects = await fetchProjects();
+
+  if (projects.length === 0) {
+    console.log("ℹ️  No projects found.");
+  } else {
+    console.log(`✅ ${projects.length} project(s) fetched.`);
+    const ws = workbook.addWorksheet("Projects");
+    buildProjectsSheet(ws, projects);
+  }
 
   const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
   const outPath = path.resolve(

@@ -14,6 +14,7 @@ export interface RegisterState {
   message: string;
   errors?: Record<string, string>;
   teamName?: string;
+  submissionToken?: string;
 }
 
 // --- Validation ---
@@ -106,17 +107,19 @@ export async function registerTeam(
     }
   }
 
-  // 3. Insert into Supabase
+  // 3. Generate submission token and insert into Supabase
+  const submissionToken = crypto.randomUUID();
   const supabase = createSupabaseServerClient();
-  const { error } = await supabase.from("registrations").insert({
+  const { error: insertError } = await supabase.from("registrations").insert({
     team_name: teamName,
     university,
     project_idea: projectIdea,
     members, // JSONB column — auto-serialized by supabase-js
+    submission_token: submissionToken,
   });
 
-  if (error) {
-    console.error("Supabase insert error:", error);
+  if (insertError) {
+    console.error("Supabase insert error:", insertError);
     return {
       success: false,
       message: "Failed to register. Please try again or contact us at hackathonhub@nsbm.ac.lk.",
@@ -125,7 +128,8 @@ export async function registerTeam(
 
   return {
     success: true,
-    message: `Team "${teamName}" registered successfully! Check your emails for Phase 1 instructions.`,
+    message: `Team "${teamName}" registered successfully!`,
     teamName,
+    submissionToken,
   };
 }
