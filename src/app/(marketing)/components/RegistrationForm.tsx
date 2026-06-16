@@ -197,15 +197,40 @@ export default function RegistrationForm() {
             >
               University / Institute <span className="text-accent-cyan">*</span>
             </label>
-            <input
-              type="text"
+            <select
               id="university"
               name="university"
               required
-              minLength={3}
-              placeholder="e.g., NSBM Green University"
-              className="w-full px-4 py-3 rounded-lg border bg-bg-tertiary text-text-primary placeholder:text-text-dim focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
-            />
+              defaultValue=""
+              className="w-full px-4 py-3 rounded-lg border bg-bg-tertiary text-text-primary focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
+            >
+              <option value="" disabled>
+                Select your university
+              </option>
+              <option value="University of Peradeniya">University of Peradeniya</option>
+              <option value="University of Moratuwa">University of Moratuwa</option>
+              <option value="University of Colombo School of Computing">University of Colombo School of Computing</option>
+              <option value="Sri Lanka Institute of Information Technology">Sri Lanka Institute of Information Technology</option>
+              <option value="University of Ruhuna">University of Ruhuna</option>
+              <option value="Uva Wellassa University">Uva Wellassa University</option>
+              <option value="Informatics Institute of Technology">Informatics Institute of Technology</option>
+              <option value="Wayamba University of Sri Lanka">Wayamba University of Sri Lanka</option>
+              <option value="General Sir John Kotelawala Defence University">General Sir John Kotelawala Defence University</option>
+              <option value="Sabaragamuwa University of Sri Lanka">Sabaragamuwa University of Sri Lanka</option>
+              <option value="Open University of Sri Lanka">Open University of Sri Lanka</option>
+              <option value="University of Kelaniya">University of Kelaniya</option>
+              <option value="University of Sri Jayewardenepura">University of Sri Jayewardenepura</option>
+              <option value="Sri Lanka Technological Campus">Sri Lanka Technological Campus</option>
+              <option value="Rajarata University of Sri Lanka">Rajarata University of Sri Lanka</option>
+              <option value="University of Vavuniya">University of Vavuniya</option>
+              <option value="University of Vocational Technology">University of Vocational Technology</option>
+              <option value="University of Jaffna">University of Jaffna</option>
+              <option value="South Eastern University of Sri Lanka">South Eastern University of Sri Lanka</option>
+              <option value="National Institute of Business Management">National Institute of Business Management</option>
+              <option value="National School of Business Management">National School of Business Management</option>
+              <option value="CINEC Campus">CINEC Campus</option>
+              <option value="Other">Other</option>
+            </select>
             <FieldError error={state.errors?.university} />
           </div>
 
