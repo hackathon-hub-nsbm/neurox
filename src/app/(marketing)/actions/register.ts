@@ -1,6 +1,8 @@
 "use server";
 
 import { createSupabaseServerClient } from "@/lib/supabase";
+import { sendEmail } from "@/lib/email";
+import { registrationEmail } from "@/lib/email-templates";
 
 // --- Types ---
 
@@ -124,6 +126,20 @@ export async function registerTeam(
       success: false,
       message: "Failed to register. Please try again or contact us at hackathonhub@nsbm.ac.lk.",
     };
+  }
+
+  // Send confirmation email to team leader only (fire-and-forget)
+  const leader = members[0];
+  if (leader) {
+    const { subject, html } = registrationEmail({
+      teamName,
+      memberName: leader.name,
+      submissionToken,
+      isLeader: true,
+    });
+    sendEmail({ to: leader.email, subject, html }).catch((err) =>
+      console.error("Failed to send registration email to", leader.email, err)
+    );
   }
 
   return {

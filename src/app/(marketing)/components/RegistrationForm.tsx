@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { registerTeam, type RegisterState } from "../actions/register";
 import SectionHeading from "./SectionHeading";
@@ -9,40 +9,6 @@ const initialState: RegisterState = {
   success: false,
   message: "",
 };
-
-function CopyButton({ token }: { token: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(token);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-accent-cyan/30 bg-accent-cyan/[0.05] text-accent-cyan text-xs uppercase tracking-wider hover:bg-accent-cyan/[0.1] transition-all"
-    >
-      {copied ? (
-        <>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          Copied!
-        </>
-      ) : (
-        <>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-          </svg>
-          Copy Token
-        </>
-      )}
-    </button>
-  );
-}
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -128,34 +94,13 @@ export default function RegistrationForm() {
           <div className="mb-8 p-6 rounded-lg border border-success/30 bg-success/[0.05]">
             <div className="flex items-start gap-3">
               <span className="text-success text-xl shrink-0">✓</span>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="font-semibold text-success text-sm mb-1">
-                    Registration Successful
-                  </h3>
-                  <p className="text-sm text-text-secondary">{state.message}</p>
-                </div>
-
-                {/* Submission Token */}
-                {state.submissionToken && (
-                  <div className="p-4 rounded-lg border border-accent-cyan/20 bg-bg-tertiary">
-                    <p className="text-xs text-text-secondary mb-2" style={{ fontFamily: "var(--font-geist-mono)" }}>
-                      Your team submission token — save this to submit your project later:
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                      <code
-                        className="text-sm text-accent-cyan break-all select-all px-3 py-2 rounded-md bg-bg-primary border border-border"
-                        style={{ fontFamily: "var(--font-geist-mono)" }}
-                      >
-                        {state.submissionToken}
-                      </code>
-                      <CopyButton token={state.submissionToken} />
-                    </div>
-                    <p className="text-xs text-error mt-3" style={{ fontFamily: "var(--font-geist-mono)" }}>
-                      ⚠ Keep this token safe! You will need it along with your team name to submit your project.
-                    </p>
-                  </div>
-                )}
+              <div>
+                <h3 className="font-semibold text-success text-sm mb-1">
+                  Registration Successful
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  {state.message} Your submission token has been sent to the team leader's email.
+                </p>
               </div>
             </div>
           </div>

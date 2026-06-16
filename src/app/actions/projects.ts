@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import { createSupabaseServerClient } from "@/lib/supabase";
 import { getTeamFromCookie } from "@/lib/auth";
+import { sendEmail } from "@/lib/email";
+import { submissionConfirmationEmail } from "@/lib/email-templates";
 
 const MAX_SCREENSHOTS = 5;
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
@@ -166,7 +168,37 @@ export async function submitProject(
     });
   }
 
-  // 6. Revalidate and return
+  // 6. Send submission confirmation emails (fire-and-forget)
+  const { data: registration } = await supabase
+    .from("registrations")
+    .select("team_name, members")
+    .eq("id", team.registrationId)
+    .single();
+
+  if (registration) {
+    const members = registration.members as { name: string; email: string }[];
+    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.vercel.app"}/projects/${project.id}`;
+
+    members.forEach((member) => {
+      const { subject, html } = submissionConfirmationEmail({
+        teamName: registration.team_name,
+        memberName: member.name,
+        projectName: name,
+        projectTagline: tagline,
+        projectId: project.id,
+        projectUrl,
+      });
+      sendEmail({ to: member.email, subject, html }).catch((err) =>
+        console.error(
+          "Failed to send submission confirmation to",
+          member.email,
+          err
+        )
+      );
+    });
+  }
+
+  // 7. Revalidate and return
   revalidatePath("/projects");
 
   return {
