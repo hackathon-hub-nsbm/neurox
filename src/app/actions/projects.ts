@@ -177,7 +177,7 @@ export async function submitProject(
 
   if (registration) {
     const members = registration.members as { name: string; email: string }[];
-    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.vercel.app"}/projects/${project.id}`;
+    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space"}/projects/${project.id}`;
 
     members.forEach((member) => {
       const { subject, html } = submissionConfirmationEmail({

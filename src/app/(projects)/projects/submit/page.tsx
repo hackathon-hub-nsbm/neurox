@@ -108,7 +108,7 @@ function AccessCodeGate({
         </button>
 
         <p className="text-xs text-text-dim text-center">
-          Lost your token? Contact us at hackathonhub@nsbm.ac.lk
+          Lost your token? Contact us at hh@nsbm.ac.lk
         </p>
       </form>
     </div>

@@ -129,10 +129,10 @@ export default function Eligibility() {
                 The application process will confirm your enrollment status.
                 Reach us at{" "}
                 <a
-                  href="mailto:hackathonhub@nsbm.ac.lk"
+                  href="mailto:hh@nsbm.ac.lk"
                   className="text-accent-cyan hover:underline"
                 >
-                  hackathonhub@nsbm.ac.lk
+                  hh@nsbm.ac.lk
                 </a>{" "}
                 with questions.
               </p>

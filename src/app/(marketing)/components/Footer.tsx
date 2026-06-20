@@ -62,10 +62,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="mailto:hackathonhub@nsbm.ac.lk"
+                  href="mailto:hh@nsbm.ac.lk"
                   className="text-sm text-text-secondary hover:text-accent-cyan transition-colors"
                 >
-                  hackathonhub@nsbm.ac.lk
+                  hh@nsbm.ac.lk
                 </a>
               </li>
               <li>

@@ -124,7 +124,7 @@ export async function registerTeam(
     console.error("Supabase insert error:", insertError);
     return {
       success: false,
-      message: "Failed to register. Please try again or contact us at hackathonhub@nsbm.ac.lk.",
+      message: "Failed to register. Please try again or contact us at hh@nsbm.ac.lk.",
     };
   }
 

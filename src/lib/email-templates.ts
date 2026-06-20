@@ -25,9 +25,7 @@ function wrapper(title: string, body: string): string {
           <!-- Header -->
           <tr>
             <td style="padding:32px 40px 24px;text-align:center;">
-              <h1 style="margin:0;font-size:28px;font-weight:800;color:#e8e8ed;letter-spacing:-0.5px;">
-                NEURO<span style="color:#00f0ff;">X</span>
-              </h1>
+              <img src="https://neurox.akashdesilva.space/neurox.webp" alt="NeuroX" width="200" height="84" style="display:block;margin:0 auto 12px;border:0;" />
               <p style="margin:8px 0 0;font-size:13px;color:#6b7280;font-family:'SF Mono',Fira Code,monospace;">
                 AI HACKATHON &bull; JULY 2026 &bull; NSBM GREEN UNIVERSITY
               </p>
@@ -42,11 +40,19 @@ function wrapper(title: string, body: string): string {
           <!-- Footer -->
           <tr>
             <td style="padding:24px 40px;text-align:center;">
+              <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:16px;">
+                <tr>
+                  <td align="center" style="padding:0 24px;">
+                    <img src="https://neurox.akashdesilva.space/nsbm.webp" alt="NSBM Green University" width="83" height="45" style="display:inline-block;margin:0 12px;border:0;vertical-align:middle;" />
+                    <img src="https://neurox.akashdesilva.space/hackathonhub.webp" alt="NSBM Hackathon Hub" width="129" height="45" style="display:inline-block;margin:0 12px;border:0;vertical-align:middle;" />
+                  </td>
+                </tr>
+              </table>
               <p style="margin:0;font-size:12px;color:#6b7280;">
                 NeuroX 2026 &bull; NSBM Green University, Sri Lanka
               </p>
               <p style="margin:8px 0 0;font-size:12px;color:#6b7280;">
-                Questions? Reply to <a href="mailto:hackathonhub@nsbm.ac.lk" style="color:#00f0ff;text-decoration:none;">hackathonhub@nsbm.ac.lk</a>
+                Questions? Reply to <a href="mailto:hh@nsbm.ac.lk" style="color:#00f0ff;text-decoration:none;">hh@nsbm.ac.lk</a>
               </p>
             </td>
           </tr>
@@ -133,7 +139,8 @@ ${isLeader ? `
 <h3 style="margin:24px 0 8px;font-size:13px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;">Next Steps</h3>
 <p ${listItem}>&#x25B8; Watch for the qualifier kick-off email with your challenge brief.</p>
 <p ${listItem}>&#x25B8; Your submission token above is your key to the project submission portal.</p>
-<p ${listItem}>&#x25B8; Visit <a href="https://neurox.vercel.app/projects" style="color:#00f0ff;text-decoration:none;">neurox.vercel.app/projects</a> to explore the gallery once projects go live.</p>
+<p ${listItem}>&#x25B8; Visit <a href="https://neurox.akashdesilva.space/projects" style="color:#00f0ff;text-decoration:none;">neurox.akashdesilva.space/projects</a> to explore the gallery once projects go live.</p>
+<p ${listItem}>&#x25B8; Download the <a href="https://www.canva.com/design/DAHNACHaUbU/rHvo8qEfzDE07KCdEYfX-Q/view" style="color:#00f0ff;text-decoration:none;">Delegate Booklet</a> for full event details, schedule, and guidelines.</p>
 
 <p ${paragraph} style="margin-top:24px;">
   Good luck &mdash; see you at the finale!<br/>
@@ -185,10 +192,11 @@ export function submissionConfirmationEmail({
 </table>
 
 <h3 style="margin:24px 0 8px;font-size:13px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;">What Happens Next?</h3>
-<p ${listItem}>&#x25B8; Your project is now visible in the <a href="https://neurox.vercel.app/projects" style="color:#00f0ff;text-decoration:none;">NeuroX gallery</a> for community voting.</p>
+<p ${listItem}>&#x25B8; Your project is now visible in the <a href="https://neurox.akashdesilva.space/projects" style="color:#00f0ff;text-decoration:none;">NeuroX gallery</a> for community voting.</p>
 <p ${listItem}>&#x25B8; Judges will evaluate submissions based on innovation, technical execution, and impact.</p>
 <p ${listItem}>&#x25B8; Top 10 teams will be invited to the Grand Finale at NSBM Green University (July 26&ndash;28).</p>
 <p ${listItem}>&#x25B8; Finalists will be announced via email &mdash; keep an eye on your inbox!</p>
+<p ${listItem}>&#x25B8; Download the <a href="https://www.canva.com/design/DAHNACHaUbU/rHvo8qEfzDE07KCdEYfX-Q/view" style="color:#00f0ff;text-decoration:none;">Delegate Booklet</a> for full event details, schedule, and guidelines.</p>
 
 <p ${paragraph} style="margin-top:24px;">
   Great work &mdash; we're excited to see what you built!<br/>
