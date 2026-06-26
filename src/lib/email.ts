@@ -30,7 +30,7 @@ export async function sendEmail({
   }
 
   try {
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: FROM,
       to,
       subject,
@@ -38,9 +38,11 @@ export async function sendEmail({
     });
 
     if (error) {
-      console.error("Resend send error:", error);
+      console.error("Resend send error:", { to, subject, error });
+    } else {
+      console.log("Resend email sent:", { id: data?.id, to, subject });
     }
   } catch (err) {
-    console.error("Resend unexpected error:", err);
+    console.error("Resend unexpected error:", { to, subject, err });
   }
 }

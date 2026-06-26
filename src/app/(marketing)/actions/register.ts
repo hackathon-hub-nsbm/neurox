@@ -128,9 +128,11 @@ export async function registerTeam(
       submissionToken,
       isLeader: true,
     });
-    sendEmail({ to: leader.email, subject, html }).catch((err) =>
-      console.error("Failed to send registration email to", leader.email, err)
-    );
+    try {
+      await sendEmail({ to: leader.email, subject, html });
+    } catch (err) {
+      console.error("Failed to send registration email to", leader.email, err);
+    }
   }
 
   return {

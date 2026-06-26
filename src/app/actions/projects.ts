@@ -179,23 +179,27 @@ export async function submitProject(
     const members = registration.members as { name: string; email: string }[];
     const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space"}/projects/${project.id}`;
 
-    members.forEach((member) => {
-      const { subject, html } = submissionConfirmationEmail({
-        teamName: registration.team_name,
-        memberName: member.name,
-        projectName: name,
-        projectTagline: tagline,
-        projectId: project.id,
-        projectUrl,
-      });
-      sendEmail({ to: member.email, subject, html }).catch((err) =>
-        console.error(
-          "Failed to send submission confirmation to",
-          member.email,
-          err
-        )
-      );
-    });
+    await Promise.allSettled(
+      members.map(async (member) => {
+        const { subject, html } = submissionConfirmationEmail({
+          teamName: registration.team_name,
+          memberName: member.name,
+          projectName: name,
+          projectTagline: tagline,
+          projectId: project.id,
+          projectUrl,
+        });
+        try {
+          await sendEmail({ to: member.email, subject, html });
+        } catch (err) {
+          console.error(
+            "Failed to send submission confirmation to",
+            member.email,
+            err
+          );
+        }
+      })
+    );
   }
 
   // 7. Revalidate and return
