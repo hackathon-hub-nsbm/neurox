@@ -40,12 +40,6 @@ function validate(
     errors.university = "University name is required.";
   }
 
-  const projectIdea = formData.get("projectIdea") as string;
-  if (!projectIdea || projectIdea.trim().length < 50) {
-    errors.projectIdea =
-      "Project idea must be at least 50 characters to give a meaningful overview.";
-  }
-
   // Validate team members
   const members: TeamMember[] = [];
   for (let i = 1; i <= 4; i++) {
@@ -98,8 +92,6 @@ export async function registerTeam(
   // 2. Extract validated data
   const teamName = (formData.get("teamName") as string).trim();
   const university = (formData.get("university") as string).trim();
-  const projectIdea = (formData.get("projectIdea") as string).trim();
-
   const members: TeamMember[] = [];
   for (let i = 1; i <= 4; i++) {
     const name = (formData.get(`memberName${i}`) as string)?.trim();
@@ -115,7 +107,6 @@ export async function registerTeam(
   const { error: insertError } = await supabase.from("registrations").insert({
     team_name: teamName,
     university,
-    project_idea: projectIdea,
     members, // JSONB column — auto-serialized by supabase-js
     submission_token: submissionToken,
   });

@@ -234,30 +234,6 @@ export default function RegistrationForm() {
             <FieldError error={state.errors?.university} />
           </div>
 
-          {/* Project Idea */}
-          <div>
-            <label
-              htmlFor="projectIdea"
-              className="block text-sm font-semibold text-text-primary mb-1.5"
-            >
-              Project Idea <span className="text-accent-cyan">*</span>
-            </label>
-            <p className="text-xs text-text-dim mb-2">
-              Describe your proposed AI solution in at least 50 characters. What
-              problem does it solve? How does it use AI/ML?
-            </p>
-            <textarea
-              id="projectIdea"
-              name="projectIdea"
-              required
-              minLength={50}
-              rows={5}
-              placeholder="Our project aims to..."
-              className="w-full px-4 py-3 rounded-lg border bg-bg-tertiary text-text-primary placeholder:text-text-dim focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm resize-y"
-            />
-            <FieldError error={state.errors?.projectIdea} />
-          </div>
-
           {/* Submit */}
           <SubmitButton />
 

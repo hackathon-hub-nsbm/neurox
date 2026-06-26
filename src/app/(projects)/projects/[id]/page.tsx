@@ -26,7 +26,6 @@ interface ProjectData {
     id: string;
     team_name: string;
     university: string;
-    project_idea: string;
     members: { name: string; email: string }[];
   } | null;
   screenshots: { id: string; storage_path: string; alt_text: string | null }[];
@@ -73,7 +72,7 @@ export default async function ProjectDetailPage({
       id, name, tagline, description, technologies, track,
       github_url, demo_url, live_url, created_at,
       registration:registrations!projects_registration_id_fkey(
-        id, team_name, university, project_idea, members
+        id, team_name, university, members
       ),
       screenshots:project_screenshots(id, storage_path, alt_text),
       votes(id),

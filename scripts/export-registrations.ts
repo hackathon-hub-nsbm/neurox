@@ -15,7 +15,6 @@ interface Registration {
   id: string;
   team_name: string;
   university: string;
-  project_idea: string;
   members: TeamMember[];
   submitted_at: string;
 }
@@ -24,7 +23,6 @@ interface FlattenedRow {
   id: string;
   team_name: string;
   university: string;
-  project_idea: string;
   member_1_name: string;
   member_1_email: string;
   member_2_name: string;
@@ -121,7 +119,6 @@ function flattenRow(r: Registration): FlattenedRow {
     id: r.id,
     team_name: r.team_name,
     university: r.university,
-    project_idea: r.project_idea,
     member_1_name: "",
     member_1_email: "",
     member_2_name: "",
@@ -169,7 +166,6 @@ const HEADERS: { key: keyof FlattenedRow; label: string }[] = [
   { key: "id", label: "ID" },
   { key: "team_name", label: "Team Name" },
   { key: "university", label: "University" },
-  { key: "project_idea", label: "Project Idea" },
   { key: "member_1_name", label: "Member 1 Name" },
   { key: "member_1_email", label: "Member 1 Email" },
   { key: "member_2_name", label: "Member 2 Name" },

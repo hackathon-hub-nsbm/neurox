@@ -68,7 +68,6 @@ Single table `public.registrations`:
 | `id` | `uuid` | Auto-generated primary key |
 | `team_name` | `text` | |
 | `university` | `text` | |
-| `project_idea` | `text` | |
 | `members` | `jsonb` | Array of `{name: string, email: string}` objects (max 4) |
 | `submitted_at` | `timestamptz` | Defaults to `now()` |
 
