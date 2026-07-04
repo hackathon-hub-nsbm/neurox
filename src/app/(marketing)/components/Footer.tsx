@@ -108,8 +108,29 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Legal links */}
+        <div className="mt-8 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="/privacy"
+              className="text-xs text-text-dim hover:text-accent-cyan transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms"
+              className="text-xs text-text-dim hover:text-accent-cyan transition-colors"
+            >
+              Terms of Service
+            </a>
+          </div>
+          <p className="text-xs text-text-dim">
+            This site uses only essential cookies for authentication.
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-text-dim">
             &copy; {new Date().getFullYear()} NSBM Hackathon Hub. All rights
             reserved.

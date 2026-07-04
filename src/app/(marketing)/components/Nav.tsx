@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const navLinks = [
@@ -15,8 +15,43 @@ const navLinks = [
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   const handleClick = () => setIsOpen(false);
+
+  // Scroll-spy: highlight active section in nav
+  useEffect(() => {
+    const sectionIds = navLinks
+      .filter((l) => l.href.startsWith("#"))
+      .map((l) => l.href.slice(1));
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((e) => e.isIntersecting);
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  // Close mobile menu on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [isOpen]);
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50 bg-bg-primary/80 backdrop-blur-xl border-b border-border/50">
@@ -39,15 +74,26 @@ export default function Nav() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="px-3 py-2 text-xs text-text-secondary hover:text-accent-cyan transition-colors rounded-md hover:bg-bg-tertiary/50 tracking-wider uppercase"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const sectionId = link.href.startsWith("#")
+                ? link.href.slice(1)
+                : null;
+              const isActive = sectionId === activeSection;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`px-3 py-2 text-xs transition-colors rounded-md tracking-wider uppercase ${
+                    isActive
+                      ? "text-accent-cyan bg-accent-cyan-dim"
+                      : "text-text-secondary hover:text-accent-cyan hover:bg-bg-tertiary/50"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           {/* Mobile hamburger */}

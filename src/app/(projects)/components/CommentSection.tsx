@@ -114,7 +114,7 @@ export default function CommentSection({
         <button
           type="submit"
           disabled={submitting}
-          className="px-5 py-2.5 rounded-lg bg-accent-cyan text-white font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-50"
+          className="px-5 py-2.5 rounded-lg bg-accent-cyan text-white font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-50 active:scale-[0.98] active:translate-y-px"
         >
           {submitting ? "Posting..." : "Post Comment"}
         </button>

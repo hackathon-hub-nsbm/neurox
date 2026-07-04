@@ -75,7 +75,7 @@ export default function VoteButton({
       type="button"
       onClick={handleVote}
       disabled={pending}
-      className={`flex items-center gap-2 px-5 py-3 rounded-xl border transition-all ${
+      className={`flex items-center gap-2 px-5 py-3 rounded-xl border transition-all active:scale-[0.98] active:translate-y-px ${
         voted
           ? "border-accent-cyan/30 bg-accent-cyan-dim text-accent-cyan"
           : "border-border bg-bg-card text-text-dim hover:text-accent-cyan hover:border-accent-cyan/30"

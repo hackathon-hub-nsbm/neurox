@@ -24,7 +24,7 @@ export default function ProjectsError({
       <button
         type="button"
         onClick={reset}
-        className="px-6 py-2.5 rounded-lg bg-accent-cyan text-white font-semibold text-sm transition-all hover:opacity-90"
+        className="px-6 py-2.5 rounded-lg bg-accent-cyan text-white font-semibold text-sm transition-all hover:opacity-90 active:scale-[0.98] active:translate-y-px"
       >
         Try Again
       </button>

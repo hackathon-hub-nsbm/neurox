@@ -17,7 +17,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full py-3.5 px-6 rounded-lg bg-accent-cyan text-bg-primary font-semibold text-sm uppercase tracking-widest transition-all hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      className="w-full py-3.5 px-6 rounded-lg bg-accent-cyan text-bg-primary font-semibold text-sm uppercase tracking-widest transition-all hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] active:scale-[0.98] active:translate-y-px active:shadow-[0_0_15px_rgba(0,240,255,0.2)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
     >
       {pending ? (
         <>
@@ -66,26 +66,31 @@ function SubmitButton() {
 
 interface FieldErrorProps {
   error?: string;
+  id?: string;
 }
 
-function FieldError({ error }: FieldErrorProps) {
+function FieldError({ error, id }: FieldErrorProps) {
   if (!error) return null;
   return (
-    <p className="mt-1 text-xs text-error" style={{ fontFamily: "var(--font-geist-mono)" }}>
+    <p id={id} role="alert" className="mt-1 text-xs text-error" style={{ fontFamily: "var(--font-geist-mono)" }}>
       {error}
     </p>
   );
+}
+
+function getErrorId(field: string, errors?: Record<string, string>): string | undefined {
+  return errors?.[field] ? `${field}-error` : undefined;
 }
 
 export default function RegistrationForm() {
   const [state, action] = useActionState(registerTeam, initialState);
 
   return (
-    <section id="register" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="register" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <SectionHeading
           number="06"
-          title="Register Your Team"
+          title="Register your team"
           subtitle="Complete the form below to secure your spot in NeuroX 2026"
         />
 
@@ -128,10 +133,12 @@ export default function RegistrationForm() {
               name="teamName"
               required
               minLength={2}
+              aria-describedby={getErrorId("teamName", state.errors)}
+              aria-invalid={!!state.errors?.teamName}
               placeholder="e.g., Neural Knights"
               className="w-full px-4 py-3 rounded-lg border bg-bg-tertiary text-text-primary placeholder:text-text-dim focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
             />
-            <FieldError error={state.errors?.teamName} />
+            <FieldError error={state.errors?.teamName} id="teamName-error" />
           </div>
 
           {/* Team Members */}
@@ -162,10 +169,12 @@ export default function RegistrationForm() {
                       id={`memberName${i}`}
                       name={`memberName${i}`}
                       required={i <= 3}
+                      aria-describedby={getErrorId(`memberName${i}`, state.errors)}
+                      aria-invalid={!!state.errors?.[`memberName${i}`]}
                       placeholder={`Member ${i} full name`}
                       className="w-full px-3 py-2 rounded-md border bg-bg-tertiary text-text-primary placeholder:text-text-dim focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
                     />
-                    <FieldError error={state.errors?.[`memberName${i}`]} />
+                    <FieldError error={state.errors?.[`memberName${i}`]} id={`memberName${i}-error`} />
                   </div>
                   <div className="sm:col-span-3">
                     <label
@@ -179,10 +188,12 @@ export default function RegistrationForm() {
                       id={`memberEmail${i}`}
                       name={`memberEmail${i}`}
                       required={i <= 3}
+                      aria-describedby={getErrorId(`memberEmail${i}`, state.errors)}
+                      aria-invalid={!!state.errors?.[`memberEmail${i}`]}
                       placeholder={`member${i}@example.com`}
                       className="w-full px-3 py-2 rounded-md border bg-bg-tertiary text-text-primary placeholder:text-text-dim focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
                     />
-                    <FieldError error={state.errors?.[`memberEmail${i}`]} />
+                    <FieldError error={state.errors?.[`memberEmail${i}`]} id={`memberEmail${i}-error`} />
                   </div>
                 </div>
               ))}
@@ -202,6 +213,8 @@ export default function RegistrationForm() {
               name="university"
               required
               defaultValue=""
+              aria-describedby={getErrorId("university", state.errors)}
+              aria-invalid={!!state.errors?.university}
               className="w-full px-4 py-3 rounded-lg border bg-bg-tertiary text-text-primary focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-all outline-none text-sm"
             >
               <option value="" disabled>
@@ -231,7 +244,7 @@ export default function RegistrationForm() {
               <option value="CINEC Campus">CINEC Campus</option>
               <option value="Other">Other</option>
             </select>
-            <FieldError error={state.errors?.university} />
+            <FieldError error={state.errors?.university} id="university-error" />
           </div>
 
           {/* Submit */}

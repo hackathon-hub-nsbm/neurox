@@ -267,7 +267,7 @@ function SubmitButton({ disabled }: { disabled?: boolean }) {
     <button
       type="submit"
       disabled={pending || disabled}
-      className="w-full py-3 px-6 rounded-lg bg-accent-cyan text-white font-semibold text-sm uppercase tracking-wider transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      className="w-full py-3 px-6 rounded-lg bg-accent-cyan text-white font-semibold text-sm uppercase tracking-wider transition-all hover:opacity-90 active:scale-[0.98] active:translate-y-px disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
     >
       {pending ? (
         <>

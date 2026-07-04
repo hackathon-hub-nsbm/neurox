@@ -85,19 +85,25 @@ const criteria = [
 
 export default function Eligibility() {
   return (
-    <section id="eligibility" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="eligibility" className="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           number="03"
-          title="Who Can Participate?"
+          title="Who can participate?"
           subtitle="Check your eligibility before registering"
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {criteria.map((item) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {criteria.map((item, i) => (
             <div
               key={item.title}
-              className="group p-6 rounded-lg border border-border bg-bg-card hover:border-accent-cyan/30 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,240,255,0.06)]"
+              className={`group p-6 rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,240,255,0.06)] ${
+                i === 0
+                  ? "lg:col-span-2 border border-border bg-bg-card hover:border-accent-cyan/30"
+                  : i % 2 === 0
+                    ? "border border-border bg-bg-card hover:border-accent-cyan/30"
+                    : "card-flat hover:border-accent-cyan/20"
+              }`}
             >
               <div className="w-10 h-10 rounded-md bg-bg-tertiary border border-border flex items-center justify-center text-accent-cyan mb-4 group-hover:text-accent-cyan group-hover:border-accent-cyan/30 transition-all">
                 {item.icon}

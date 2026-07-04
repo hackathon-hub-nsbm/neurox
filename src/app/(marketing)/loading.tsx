@@ -1,12 +1,6 @@
 import Image from "next/image";
 import TerminalCard from "./components/TerminalCard";
-
-const LOG_LINES = [
-  { text: "Initializing NeuroX neural interface...", delay: 0.3 },
-  { text: "Loading system components...", delay: 0.6 },
-  { text: "Establishing secure connection...", delay: 0.9 },
-  { text: "Calibrating neural pathways...", delay: 1.2 },
-];
+import { BOOT_LOG_LINES } from "@/lib/loading-data";
 
 export default function Loading() {
   return (
@@ -30,7 +24,7 @@ export default function Loading() {
         >
           {/* Staggered boot log lines */}
           <div className="space-y-1.5 mb-4">
-            {LOG_LINES.map((line) => (
+            {BOOT_LOG_LINES.map((line) => (
               <p
                 key={line.text}
                 className="text-xs sm:text-sm text-text-secondary opacity-0"

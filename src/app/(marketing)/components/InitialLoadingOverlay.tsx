@@ -3,16 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import TerminalCard from "./TerminalCard";
-
-const LOG_LINES = [
-  { text: "Initializing NeuroX neural interface...", delay: 0.3 },
-  { text: "Loading system components...", delay: 0.6 },
-  { text: "Establishing secure connection...", delay: 0.9 },
-  { text: "Calibrating neural pathways...", delay: 1.2 },
-];
-
-/** Minimum time the boot sequence is visible (ms) — covers all staggered log lines + "System ready." */
-const MIN_DISPLAY_MS = 2200;
+import { BOOT_LOG_LINES, MIN_DISPLAY_MS } from "@/lib/loading-data";
 
 export default function InitialLoadingOverlay() {
   const [phase, setPhase] = useState<"loading" | "exiting" | "done">("loading");
@@ -69,7 +60,7 @@ export default function InitialLoadingOverlay() {
         >
           {/* Staggered boot log lines */}
           <div className="space-y-1.5 mb-4">
-            {LOG_LINES.map((line) => (
+            {BOOT_LOG_LINES.map((line) => (
               <p
                 key={line.text}
                 className="text-xs sm:text-sm text-text-secondary opacity-0"

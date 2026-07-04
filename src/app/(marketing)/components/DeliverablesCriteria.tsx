@@ -29,10 +29,10 @@ const evaluationCriteria = [
   {
     label: "Technical Complexity",
     weight: 25,
-    color: "var(--color-accent-purple)",
+    color: "var(--color-accent-cyan)",
   },
-  { label: "Practical Impact", weight: 25, color: "var(--color-accent-blue)" },
-  { label: "Presentation Quality", weight: 20, color: "var(--color-accent-pink)" },
+  { label: "Practical Impact", weight: 25, color: "var(--color-accent-cyan)" },
+  { label: "Presentation Quality", weight: 20, color: "var(--color-accent-cyan)" },
 ];
 
 export default function DeliverablesCriteria() {
@@ -41,7 +41,7 @@ export default function DeliverablesCriteria() {
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           number="04"
-          title="Deliverables & Evaluation"
+          title="Deliverables & evaluation"
           subtitle="What you'll submit and how you'll be judged"
         />
 
@@ -78,7 +78,7 @@ export default function DeliverablesCriteria() {
               className="text-sm font-semibold tracking-widest uppercase mb-6"
               style={{
                 fontFamily: "var(--font-geist-mono)",
-                color: "var(--color-accent-purple)",
+                color: "var(--color-accent-cyan)",
               }}
             >
               Evaluation Criteria

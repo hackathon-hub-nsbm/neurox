@@ -26,7 +26,7 @@ export default function ProjectCard({
   return (
     <Link
       href={`/projects/${id}`}
-      className="group block rounded-xl border border-border bg-bg-card overflow-hidden hover:border-accent-cyan/40 hover:shadow-[0_0_15px_rgba(0,240,255,0.06)] transition-all"
+      className="group block rounded-2xl border border-border bg-bg-card overflow-hidden hover:border-accent-cyan/40 hover:shadow-[0_0_15px_rgba(0,240,255,0.06)] transition-all"
     >
       {/* Screenshot */}
       <div className="aspect-video bg-bg-tertiary overflow-hidden">

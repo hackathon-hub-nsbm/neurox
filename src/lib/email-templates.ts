@@ -17,9 +17,9 @@ const C = {
   bgElevated: "#16162a",
   accent: "#00f0ff",
   accentDim: "#00f0ff22",
-  blue: "#3b82f6",
-  purple: "#a855f7",
-  pink: "#ec4899",
+  blue: "#4a6a8a",
+  purple: "#6a5a8a",
+  pink: "#8a5a6a",
   text: "#e8e8ed",
   textSecondary: "#9ca3af",
   textDim: "#6b7280",
@@ -28,6 +28,9 @@ const C = {
   success: "#22c55e",
   error: "#ef4444",
 } as const;
+
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space";
 
 // Mini 64px grid as a base64 SVG data-URI. A single 64×64 SVG with 1px
 // semi-transparent cyan lines at the left and top edges, tiled via CSS.
@@ -66,7 +69,7 @@ function glowBorderCell(inner: string): string {
   return `
     <table cellpadding="0" cellspacing="0" width="100%" style="margin:16px 0;">
       <tr>
-        <td style="padding:2px;border-radius:8px;background:linear-gradient(135deg,${C.accent},${C.purple},${C.blue},${C.accent});background-size:300% 300%;">
+        <td style="padding:2px;border-radius:8px;background:linear-gradient(135deg,${C.accent},rgba(0,240,255,0.6),rgba(0,240,255,0.3),${C.accent});background-size:300% 300%;">
           <table cellpadding="0" cellspacing="0" width="100%">
             <tr>
               <td style="padding:20px 24px;background-color:${C.bg};border-radius:6px;">
@@ -84,7 +87,7 @@ function ctaButton(label: string, href: string): string {
   return `
     <table cellpadding="0" cellspacing="0" style="margin:24px 0 8px;">
       <tr>
-        <td align="center" style="border-radius:8px;background:linear-gradient(135deg,${C.accent},${C.blue});box-shadow:0 0 20px ${C.accentDim};">
+        <td align="center" style="border-radius:8px;background:linear-gradient(135deg,${C.accent},rgba(0,240,255,0.7));box-shadow:0 0 20px ${C.accentDim};">
           <a href="${href}" style="display:inline-block;padding:14px 36px;font-size:14px;font-weight:700;color:${C.bg};text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
             ${label}
           </a>
@@ -124,14 +127,14 @@ function wrapper(title: string, body: string): string {
 
           <!-- ===== TOP ACCENT BAR ===== -->
           <tr>
-            <td style="height:4px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,${C.accent},${C.purple},${C.blue},${C.accent});background-size:200% 100%;"></td>
+            <td style="height:4px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,${C.accent},rgba(0,240,255,0.5),rgba(0,240,255,0.2),${C.accent});background-size:200% 100%;"></td>
           </tr>
 
           <!-- ===== HEADER ===== -->
           <tr>
             <td style="padding:36px 40px 20px;text-align:center;background-color:${C.bgCard};border-left:1px solid ${C.border};border-right:1px solid ${C.border};">
               <img
-                src="https://neurox.akashdesilva.space/neurox.webp"
+                src="${BASE_URL}/neurox.webp"
                 alt="NeuroX"
                 width="180"
                 height="76"
@@ -168,9 +171,9 @@ function wrapper(title: string, body: string): string {
               <table cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:20px;">
                 <tr>
                   <td align="center" style="padding:12px 0;">
-                    <img src="https://neurox.akashdesilva.space/nsbm.webp" alt="NSBM Green University" width="75" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
-                    <img src="https://neurox.akashdesilva.space/hackathonhub.webp" alt="NSBM Hackathon Hub" width="118" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
-                    <img src="https://neurox.akashdesilva.space/neurox.webp" alt="NeuroX" width="100" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
+                    <img src="${BASE_URL}/nsbm.webp" alt="NSBM Green University" width="75" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
+                    <img src="${BASE_URL}/hackathonhub.webp" alt="NSBM Hackathon Hub" width="118" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
+                    <img src="${BASE_URL}/neurox.webp" alt="NeuroX" width="100" height="40" style="display:inline-block;margin:0 14px;border:0;vertical-align:middle;" />
                   </td>
                 </tr>
               </table>
@@ -187,7 +190,7 @@ function wrapper(title: string, body: string): string {
               <table cellpadding="0" cellspacing="0" style="margin:0 auto 20px;">
                 <tr>
                   <td style="padding:0 12px;">
-                    <a href="https://neurox.akashdesilva.space/projects" style="font-size:12px;color:${C.accent};text-decoration:none;${monoLabel}">Gallery</a>
+                    <a href="${BASE_URL}/projects" style="font-size:12px;color:${C.accent};text-decoration:none;${monoLabel}">Gallery</a>
                   </td>
                   <td style="padding:0 12px;">
                     <a href="https://www.canva.com/design/DAHNACHaUbU/rHvo8qEfzDE07KCdEYfX-Q/view" style="font-size:12px;color:${C.accent};text-decoration:none;${monoLabel}">Delegate Booklet</a>
@@ -341,7 +344,7 @@ export function registrationEmail({
       <tr>
         <td style="padding:8px 0;font-size:14px;color:${C.textSecondary};line-height:1.6;">
           <span style="color:${C.accent};font-weight:700;">&#x25B8;</span>
-          <span style="padding-left:8px;">Browse the <a href="https://neurox.akashdesilva.space/projects" style="color:${C.accent};text-decoration:underline;">project gallery</a> once submissions are live.</span>
+          <span style="padding-left:8px;">Browse the <a href="${BASE_URL}/projects" style="color:${C.accent};text-decoration:underline;">project gallery</a> once submissions are live.</span>
         </td>
       </tr>
       <tr>
@@ -352,7 +355,7 @@ export function registrationEmail({
       </tr>
     </table>
 
-    ${ctaButton("Explore Project Gallery", "https://neurox.akashdesilva.space/projects")}
+    ${ctaButton("Explore Project Gallery", "${BASE_URL}/projects")}
 
     <p style="margin-top:24px;${paragraph}">
       Good luck &mdash; see you at the finale<span style="color:${C.accent};">.</span><br/>
@@ -425,7 +428,7 @@ export function submissionConfirmationEmail({
       <tr>
         <td style="padding:8px 0;font-size:14px;color:${C.textSecondary};line-height:1.6;">
           <span style="color:${C.accent};font-weight:700;">&#x25B8;</span>
-          <span style="padding-left:8px;">Browse and vote for other projects in the <a href="https://neurox.akashdesilva.space/projects" style="color:${C.accent};text-decoration:underline;">gallery</a>.</span>
+          <span style="padding-left:8px;">Browse and vote for other projects in the <a href="${BASE_URL}/projects" style="color:${C.accent};text-decoration:underline;">gallery</a>.</span>
         </td>
       </tr>
       <tr>

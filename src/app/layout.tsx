@@ -34,12 +34,21 @@ export const metadata: Metadata = {
       "Where neural networks meet real-world innovation. A three-phase AI hackathon for Sri Lankan undergraduates.",
     type: "website",
     siteName: "NeuroX",
+    images: [
+      {
+        url: "https://neurox.akashdesilva.space/neurox.webp",
+        width: 600,
+        height: 180,
+        alt: "NeuroX — AI Hackathon",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NeuroX — July 2026 | NSBM Hackathon Hub",
     description:
       "Where neural networks meet real-world innovation. Register your team now.",
+    images: ["https://neurox.akashdesilva.space/neurox.webp"],
   },
 };
 
@@ -53,7 +62,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} dark antialiased`}
     >
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-md focus:bg-accent-cyan focus:text-bg-primary focus:text-sm focus:font-semibold"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

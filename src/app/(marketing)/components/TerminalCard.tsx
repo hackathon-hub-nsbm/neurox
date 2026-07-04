@@ -24,7 +24,7 @@ export default function TerminalCard({
 
   return (
     <div
-      className={`relative rounded-lg overflow-hidden border border-border bg-bg-card ${className}`}
+      className={`relative rounded-md overflow-hidden border border-border bg-bg-card hover:-translate-y-0.5 transition-transform duration-200 ${className}`}
     >
       {/* Title bar */}
       <div className="flex items-center gap-2 px-4 py-3 bg-bg-tertiary border-b border-border">

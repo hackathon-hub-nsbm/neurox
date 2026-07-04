@@ -45,11 +45,11 @@ const phases = [
 
 export default function Timeline() {
   return (
-    <section id="timeline" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="timeline" className="section-divider py-24 md:py-36 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <SectionHeading
           number="02"
-          title="Event Timeline"
+          title="Event timeline"
           subtitle="Three phases. One month. Infinite possibilities."
         />
 
@@ -59,7 +59,7 @@ export default function Timeline() {
             className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
             style={{
               background:
-                "linear-gradient(to bottom, transparent, var(--color-accent-cyan-dim), var(--color-accent-purple-dim), var(--color-accent-blue-dim), transparent)",
+                "linear-gradient(to bottom, transparent, var(--color-accent-cyan-dim), rgba(0,240,255,0.08), var(--color-accent-cyan-dim), transparent)",
             }}
             aria-hidden="true"
           />

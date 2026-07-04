@@ -3,7 +3,7 @@ import TerminalCard from "./TerminalCard";
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="pt-24 md:pt-40 pb-20 md:pb-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           number="01"
@@ -38,8 +38,8 @@ export default function About() {
             </p>
           </div>
 
-          {/* Terminal sidebar */}
-          <div className="md:col-span-2">
+          {/* Terminal sidebar — offset vertically for staggered look */}
+          <div className="md:col-span-2 md:mt-12">
             <TerminalCard title="~/neurox/mission.sh" accent="purple">
               <div
                 className="space-y-2 text-sm"

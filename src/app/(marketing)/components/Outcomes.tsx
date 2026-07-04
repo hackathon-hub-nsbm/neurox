@@ -35,11 +35,11 @@ const prizes = [
 
 export default function Outcomes() {
   return (
-    <section id="prizes" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="prizes" className="section-divider pt-20 md:pt-28 pb-24 md:pb-36 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           number="05"
-          title="Prizes & Outcomes"
+          title="Prizes & outcomes"
           subtitle="Recognition, rewards, and opportunities beyond the hackathon"
         />
 
@@ -50,7 +50,7 @@ export default function Outcomes() {
               key={prize.place}
               className={`relative rounded-lg border bg-bg-card p-6 md:p-8 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,240,255,0.08)] ${
                 prize.featured
-                  ? "border-accent-cyan/40 md:-mt-4 md:mb-4 glow-border-active z-10"
+                  ? "border-accent-cyan/40 md:-mt-4 md:mb-4 md:scale-[1.03] glow-border-active z-10"
                   : "border-border hover:border-accent-cyan/20"
               }`}
               style={{ order: prize.featured ? 0 : prize.rank === "2nd" ? -1 : 1 }}
