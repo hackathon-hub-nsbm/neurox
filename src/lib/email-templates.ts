@@ -353,6 +353,12 @@ export function registrationEmail({
           <span style="padding-left:8px;">Download the <a href="https://www.canva.com/design/DAHNACHaUbU/rHvo8qEfzDE07KCdEYfX-Q/view" style="color:${C.accent};text-decoration:underline;">Delegate Booklet</a> for full event details.</span>
         </td>
       </tr>
+      <tr>
+        <td style="padding:8px 0;font-size:14px;color:${C.textSecondary};line-height:1.6;">
+          <span style="color:${C.accent};font-weight:700;">&#x25B8;</span>
+          <span style="padding-left:8px;">Join the <a href="https://chat.whatsapp.com/KrkJBtqKzkLHOwuEmVFMrJ" style="color:${C.accent};text-decoration:underline;">WhatsApp Community</a> for updates and announcements.</span>
+        </td>
+      </tr>
     </table>
 
     ${ctaButton("Explore Project Gallery", "${BASE_URL}/projects")}

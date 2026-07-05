@@ -46,6 +46,10 @@ export default function Hero() {
               <span className="px-3 py-1.5 rounded-md bg-bg-tertiary border border-border text-text-secondary">
                 NSBM Green University
               </span>
+              <span className="text-text-dim">·</span>
+              <span className="px-3 py-1.5 rounded-md bg-bg-tertiary border border-accent-pink/40 text-accent-pink">
+                Inauguration: July 6
+              </span>
             </div>
 
             {/* CTA */}

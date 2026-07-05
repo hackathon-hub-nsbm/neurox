@@ -110,6 +110,12 @@ export default function Outcomes() {
               description:
                 "Winning teams gain access to the NSBM Innovation Hub incubation program with resources and mentorship.",
             },
+            {
+              icon: "💰",
+              title: "Popular Choice Award",
+              description:
+                "A cash reward for the most popular team, voted by attendees and the community. Amount to be announced soon.",
+            },
           ].map((item) => (
             <div
               key={item.title}
