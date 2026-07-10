@@ -90,7 +90,7 @@ export default function Eligibility() {
         <SectionHeading
           number="03"
           title="Who can participate?"
-          subtitle="Check your eligibility before registering"
+          subtitle="Review the participation requirements"
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -130,9 +130,9 @@ export default function Eligibility() {
                 Not sure if you qualify?
               </p>
               <p className="text-sm text-text-secondary">
-                If you&apos;re an undergraduate at any recognized Sri Lankan
-                institution and can form a team of 3–4, you&apos;re eligible.
-                The application process will confirm your enrollment status.
+                To have been eligible, you must be an undergraduate at a recognized Sri Lankan
+                institution and have formed a team of 3–4.
+                Enrollment status has been confirmed for all registered teams.
                 Reach us at{" "}
                 <a
                   href="mailto:hh@nsbm.ac.lk"

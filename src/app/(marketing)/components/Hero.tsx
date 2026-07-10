@@ -55,10 +55,10 @@ export default function Hero() {
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-center md:items-start justify-center md:justify-start gap-4">
           <a
-            href="#register"
+            href="#timeline"
             className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-accent-cyan text-bg-primary font-semibold text-sm uppercase tracking-widest overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] active:scale-[0.98] active:translate-y-px active:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
           >
-            <span className="relative z-10">Register Your Team</span>
+            <span className="relative z-10">View Schedule</span>
             <svg
               className="relative z-10 w-4 h-4 group-hover:translate-x-1 transition-transform"
               fill="none"

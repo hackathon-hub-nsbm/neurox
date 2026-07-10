@@ -9,7 +9,6 @@ const navLinks = [
   { href: "#eligibility", label: "Eligibility" },
   { href: "#criteria", label: "Criteria" },
   { href: "#prizes", label: "Prizes" },
-  { href: "#register", label: "Register" },
   { href: "/projects", label: "Projects" },
 ];
 

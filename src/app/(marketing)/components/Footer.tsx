@@ -40,7 +40,6 @@ export default function Footer() {
                 { href: "#eligibility", label: "Eligibility" },
                 { href: "#criteria", label: "Criteria" },
                 { href: "#prizes", label: "Prizes" },
-                { href: "#register", label: "Register" },
               ].map((link) => (
                 <li key={link.href}>
                   <a
