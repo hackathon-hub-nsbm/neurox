@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "NeuroX",
     images: [
       {
-        url: "https://neurox.akashdesilva.space/neurox.webp",
+        url: "https://neurox.hackathonhub.site/neurox.webp",
         width: 600,
         height: 180,
         alt: "NeuroX — AI Hackathon",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "NeuroX — July 2026 | NSBM Hackathon Hub",
     description:
       "Where neural networks meet real-world innovation. Register your team now.",
-    images: ["https://neurox.akashdesilva.space/neurox.webp"],
+    images: ["https://neurox.hackathonhub.site/neurox.webp"],
   },
 };
 

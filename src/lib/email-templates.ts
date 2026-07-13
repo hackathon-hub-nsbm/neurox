@@ -30,7 +30,7 @@ const C = {
 } as const;
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.hackathonhub.site";
 
 // Mini 64px grid as a base64 SVG data-URI. A single 64×64 SVG with 1px
 // semi-transparent cyan lines at the left and top edges, tiled via CSS.

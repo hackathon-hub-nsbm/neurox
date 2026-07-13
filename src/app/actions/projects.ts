@@ -183,7 +183,7 @@ export async function submitProject(
 
   if (registration) {
     const members = registration!.members as { name: string; email: string }[];
-    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space"}/projects/${project!.id}`;
+    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.hackathonhub.site"}/projects/${project!.id}`;
 
     await Promise.allSettled(
       members.map(async (member) => {
