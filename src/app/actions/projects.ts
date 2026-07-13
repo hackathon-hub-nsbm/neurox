@@ -106,7 +106,7 @@ export async function submitProject(
   const { data: existing } = await supabase
     .from("projects")
     .select("id")
-    .eq("registration_id", team.registrationId)
+    .eq("registration_id", team!.registrationId)
     .single();
 
   if (existing) {
@@ -120,7 +120,7 @@ export async function submitProject(
   const { data: project, error: insertError } = await supabase
     .from("projects")
     .insert({
-      registration_id: team.registrationId,
+      registration_id: team!.registrationId,
       name,
       tagline,
       description,
@@ -147,7 +147,7 @@ export async function submitProject(
   for (let i = 0; i < screenshotFiles.length; i++) {
     const file = screenshotFiles[i];
     const ext = file.name.split(".").pop() || "png";
-    const storagePath = `${project.id}/${i}-${crypto.randomUUID()}.${ext}`;
+    const storagePath = `${project!.id}/${i}-${crypto.randomUUID()}.${ext}`;
 
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
@@ -167,7 +167,7 @@ export async function submitProject(
 
     // Insert screenshot metadata
     await adminClient.from("project_screenshots").insert({
-      project_id: project.id,
+      project_id: project!.id,
       storage_path: storagePath,
       alt_text: file.name,
       sort_order: i,
@@ -178,21 +178,21 @@ export async function submitProject(
   const { data: registration } = await supabase
     .from("registrations")
     .select("team_name, members")
-    .eq("id", team.registrationId)
+    .eq("id", team!.registrationId)
     .single();
 
   if (registration) {
-    const members = registration.members as { name: string; email: string }[];
-    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space"}/projects/${project.id}`;
+    const members = registration!.members as { name: string; email: string }[];
+    const projectUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://neurox.akashdesilva.space"}/projects/${project!.id}`;
 
     await Promise.allSettled(
       members.map(async (member) => {
         const { subject, html } = submissionConfirmationEmail({
-          teamName: registration.team_name,
+          teamName: registration!.team_name,
           memberName: member.name,
           projectName: name,
           projectTagline: tagline,
-          projectId: project.id,
+          projectId: project!.id,
           projectUrl,
         });
         try {
@@ -214,6 +214,6 @@ export async function submitProject(
   return {
     success: true,
     message: `Project "${name}" submitted successfully! View it in the gallery.`,
-    projectId: project.id,
+    projectId: project!.id,
   };
 }
