@@ -1,4 +1,5 @@
 import SectionHeading from "./SectionHeading";
+import PopularityAward from "./PopularityAward";
 
 const prizes = [
   {
@@ -89,6 +90,9 @@ export default function Outcomes() {
           ))}
         </div>
 
+        {/* Popular Choice Award — featured sub-section */}
+        <PopularityAward />
+
         {/* Additional outcomes */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {[
@@ -109,12 +113,6 @@ export default function Outcomes() {
               title: "Incubation Pathway",
               description:
                 "Winning teams gain access to the NSBM Innovation Hub incubation program with resources and mentorship.",
-            },
-            {
-              icon: "💰",
-              title: "Popular Choice Award",
-              description:
-                "A cash reward for the most popular team, voted by attendees and the community. Amount to be announced soon.",
             },
           ].map((item) => (
             <div
