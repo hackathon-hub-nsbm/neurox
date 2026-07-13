@@ -26,6 +26,12 @@ export async function submitProject(
   prevState: SubmitProjectState,
   formData: FormData
 ): Promise<SubmitProjectState> {
+  // Submissions are disabled
+  return {
+    success: false,
+    message: "Project submissions are currently closed.",
+  };
+
   // 1. Verify team authentication
   const team = await getTeamFromCookie();
   if (!team) {
