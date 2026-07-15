@@ -35,7 +35,7 @@ const phases = [
     date: "July 26–28, 2026",
     accent: "blue" as const,
     details: [
-      "Top 10 teams present live at NSBM Green University before a panel of industry judges.",
+      "Top 15 teams present live at NSBM Green University before a panel of industry judges.",
       "Final pitch presentations, live demos, and Q&A sessions.",
       "Awards ceremony with prizes, certificates, and networking opportunities.",
     ],
