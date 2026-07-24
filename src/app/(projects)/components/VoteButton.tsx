@@ -39,6 +39,7 @@ export default function VoteButton({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVoted(hasVoted(projectId));
     setMounted(true);
   }, [projectId]);

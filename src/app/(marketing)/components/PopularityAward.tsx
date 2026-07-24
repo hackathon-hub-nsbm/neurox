@@ -36,7 +36,7 @@ export default function PopularityAward() {
             <p className="text-sm text-text-secondary leading-relaxed mb-6">
               The Popular Choice Award is an Instagram + LinkedIn engagement
               challenge. Create a 60–90 second vertical video showcasing your
-              project journey, the problem you're solving, and the business value
+              project journey, the problem you&apos;re solving, and the business value
               of your idea. The video with the highest authentic engagement wins.
             </p>
 
@@ -234,7 +234,7 @@ export default function PopularityAward() {
                   color: "var(--color-accent-cyan)",
                 }}
               >
-                ✅ Dos & Don'ts
+                ✅ Dos &amp; Don&apos;ts
               </h4>
               <div className="grid grid-cols-2 gap-3">
                 <div>

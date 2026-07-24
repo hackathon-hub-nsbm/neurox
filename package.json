@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "bun --bun next dev",
-    "build": "bun --bun next build",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && bun --bun next build",
     "start": "bun --bun next start",
     "lint": "eslint",
-    "export": "bun run scripts/export-registrations.ts"
+    "export": "bun run scripts/export-registrations.ts",
+    "postinstall": "bun run scripts/patch-typescript.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.1",
@@ -26,7 +28,8 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^7.0.2",
+    "@typescript/typescript6": "^6.0.2"
   },
   "ignoreScripts": [
     "sharp",
