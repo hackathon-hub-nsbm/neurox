@@ -5,6 +5,7 @@ import Timeline from "./components/Timeline";
 import Eligibility from "./components/Eligibility";
 import DeliverablesCriteria from "./components/DeliverablesCriteria";
 import Outcomes from "./components/Outcomes";
+import Sponsors from "./components/Sponsors";
 import RegistrationForm from "./components/RegistrationForm";
 import Footer from "./components/Footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
         <Eligibility />
         <DeliverablesCriteria />
         <Outcomes />
+        <Sponsors />
         <RegistrationForm />
       </main>
       <Footer />

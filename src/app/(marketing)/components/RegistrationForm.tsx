@@ -5,7 +5,7 @@ export default function RegistrationForm() {
     <section id="register" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <SectionHeading
-          number="06"
+          number="07"
           title="Registration closed"
           subtitle="The submission window for NeuroX 2026 has ended."
         />
